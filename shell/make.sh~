@@ -1,0 +1,97 @@
+#! /bin/bash
+
+cd /home/yangkai/k-anonymous/code
+
+g++ -o3 Main.cpp -o main
+
+frequency=("200000" "400000" "600000" "800000" "1000000")
+poi=("200" "400" "600" "800" "1000")
+K=("10" "20" "30" "40" "50")
+KNN=("2" "4" "6" "8" "10")
+user=("1000" "2000" "3000" "4000" "5000")
+type=("0" "1" "2" "3")
+distance="0"
+entropy="1"
+variance="1"
+threshold="1"
+
+
+echo ""
+echo "2. effect of POIs"
+for j in {0..4}
+do
+	ii=2
+	file="/home/yangkai/k-anonymous/log/13_${frequency[$ii]}_${ii}_${poi[$j]}_0_${user[0]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[$ii]}" $threshold "${poi[$j]}" "${K[0]}" "${user[0]}" "${type[0]}" $file $distance $entropy $variance ${KNN[0]}
+done
+
+echo ""
+echo "2. effect of K"
+for j in {0..4}
+do
+	ii=2
+	file="/home/yangkai/k-anonymous/log/13_${frequency[$ii]}_${ii}_${poi[4]}_0_${user[0]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[$ii]}" $threshold "${poi[4]}" "${K[$j]}" "${user[0]}" "${type[0]}" $file $distance $entropy $variance ${KNN[0]}
+done
+
+'''
+
+echo ""
+echo "2. effect of POIs"
+for j in {0..4}
+do
+	ii=2
+	file="/home/yangkai/k-anonymous/log/13_${frequency[$ii]}_${ii}_${poi[$j]}_0_${user[0]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[$ii]}" $threshold "${poi[$j]}" "${K[0]}" "${user[0]}" "${type[0]}" $file $distance $entropy $variance ${KNN[0]}
+done
+
+
+echo ""
+echo "1. effect of frequency"
+for i in {0..4}
+do
+	file="/home/yangkai/k-anonymous/log/13_${frequency[$i]}_0_${poi[4]}_${K[1]}_${user[0]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[$i]}" $threshold "${poi[4]}" "${K[1]}" "${user[0]}" "${type[0]}" $file $distance $entropy $variance
+done
+
+
+echo ""
+echo "2. effect of POIs"
+for j in {0..4}
+do
+	file="/home/yangkai/k-anonymous/log/13_${frequency[0]}_0_${poi[$j]}_${K[1]}_${user[0]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[0]}" $threshold "${poi[$j]}" "${K[1]}" "${user[0]}" "${type[0]}" $file $distance $entropy $variance
+done
+
+
+echo ""
+echo "3. effect of K"
+for k in {0..4}
+do
+	file="/home/yangkai/k-anonymous/log/13_${frequency[0]}_0_${poi[4]}_${K[$k]}_${user[0]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[0]}" $threshold "${poi[4]}" "${K[$k]}" "${user[0]}" "${type[0]}" $file $distance $entropy $variance
+done
+
+
+echo ""
+echo "4. effect of users"
+for l in {0..4}
+do
+	file="/home/yangkai/k-anonymous/log/13_${frequency[0]}_0_${poi[4]}_${K[1]}_${user[$l]}_${type[0]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[0]}" $threshold "${poi[4]}" "${K[1]}" "${user[$l]}" "${type[0]}" $file $distance $entropy $variance $query
+done
+
+
+echo ""
+echo "5. effect of traverse type"
+for m in {0..3}
+do
+	file="/home/yangkai/k-anonymous/log/13_${frequency[0]}_0_${poi[4]}_${K[1]}_${user[0]}_${type[$m]}.txt"
+	./main /home/yangkai/k-anonymous/roadnetwork/oldenburgGenNodeNew.txt /home/yangkai/k-anonymous/roadnetwork/oldenburgGenEdgeNew.txt 13 "${frequency[0]}" $threshold "${poi[4]}" "${K[1]}" "${user[0]}" "${type[$m]}" $file $distance $entropy $variance
+
+done
+
+'''
+
+
+
